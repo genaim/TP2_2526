@@ -1,0 +1,221 @@
+digraph AnimalStateUpdate_Acyclic {
+    // Configuración general
+    graph [rankdir=TB, splines=polyline, nodesep=0.6, ranksep=0.5];
+    node [fontname="Arial", fontsize=10, shape=box, style="filled,rounded", fillcolor="#F5F5F5", color="#333333"];
+    edge [fontname="Arial", fontsize=9, color="#555555"];
+
+    // Nodos de Inicio y Fin
+    Start [label="Start: Update Start Sheep", shape=ellipse, fillcolor="#E1F5FE", style=filled];
+    
+    // Decisión Principal
+    StateDecider [shape=diamond, label="Current State?", style=filled];
+
+    Start -> StateDecider;
+
+    // ================= NORMAL =================
+    subgraph cluster_normal_flow {
+	label = "State: NORMAL";
+        style=filled;
+        color="#f1f8e9";
+
+	subgraph cluster_normal_flow_1 {
+	  label = "(1)";
+          style=filled;
+          color="#00f8e9";
+
+	  N_1_i [label="i: the distance of the \n animal de destination \n is smaller than 8.0?", shape=diamond];
+	  N_1_i_yes [label="i: Choose a new \l random destination"];
+	  N_1_ii [label="1.ii - 1.v"];
+
+	  N_1_i -> N_1_i_yes [label="Yes"]
+	  N_1_i -> N_1_ii [label="No"]
+	  N_1_i_yes -> N_1_ii 
+       }  
+
+      subgraph cluster_normal_flow_2 {
+	  label = "(2)";
+          style=filled;
+          color="#00f8e9";
+
+	  N_2_i [label="i: dangerSource is null?", shape=diamond];
+	  N_2_i_yes [label="i: search for a new animal \l that is considered dangerous"];
+	  N_2_ii [label="ii: dangerSource \n is not null", shape=diamond];
+	  N_2_ii_a [label="ii: set state to DANGER"];
+	  N_2_ii_b [label="ii: the desire is greater than 65.0", shape=diamond];
+	  N_2_ii_c [label="ii: set state to MATE"];
+
+	  N_2_i -> N_2_i_yes [label="Yes"]
+	  N_2_i -> N_2_ii [label="No"]
+	  N_2_i_yes -> N_2_ii 
+	  N_2_ii -> N_2_ii_a [label="Yes"]
+	  N_2_ii -> N_2_ii_b [label="No"]
+	  N_2_ii_b -> N_2_ii_c [label="Yes"]
+	  
+       }
+
+       N_end [label="End of Normal State"];
+
+       N_1_ii -> N_2_i
+       N_2_ii_a -> N_end
+       N_2_ii_b -> N_end [label="No"]
+       N_2_ii_c -> N_end
+       
+    }
+
+    // ================= DANGER =================
+    subgraph cluster_danger_flow {
+        label="State: DANGER"; color=none; 
+        style=filled;
+        color="#f1f8e9";
+
+	subgraph cluster_danger_flow_1 {
+	  label = "(1)";
+          style=filled;
+          color="#00f8e9";
+
+	  D_1 [label="1: dangerSource is not \n null and its \n state is DEAD?", shape=diamond];
+	  D_1_a [label="1: set dangerSource to null"];
+
+	  D_1 -> D_1_a [label="Yes"]
+       }  
+
+	subgraph cluster_danger_flow_2 {
+	  label = "(2)";
+          style=filled;
+          color="#00f8e9";
+
+	  D_2 [label="2: dangerSource \n is null", shape=diamond];
+	  D_2_a [label="2: Advance"];
+	  D_2_b [label="2.i - 2.v"];
+
+	  D_2 -> D_2_a [label="Yes"]
+	  D_2 -> D_2_b [label="No"]
+       }  
+
+       subgraph cluster_danger_flow_3 {
+	  label = "(3)";
+          style=filled;
+          color="#00f8e9";
+
+	  D_3 [label="i: dangerSource is null \n or dangerSource is not \n in the visual field \n of the animal", shape=diamond]
+	  D_3_a [label="3.1.a: search for a new animal \l that is considered dangerous"];
+	  D_3_b [label="3.1.b: dangerSource \n is null?", shape=diamond];
+	  D_3_c [label="3.1.b.a: the desire is \n smaller than 65.0?", shape=diamond]
+	  D_3_d [label="3.1.b.a: set state \l to NORMAL"];
+	  D_3_e [label="3.1.b.a: set state \l to MATE"];
+
+	  D_3 -> D_3_a [label="Yes"]
+	  D_3_a -> D_3_b
+	  D_3_b -> D_3_c [label="Yes"]
+	  D_3_c -> D_3_d [label="Yes"]
+	  D_3_c -> D_3_e [label="No"]
+      }
+
+       D_end [label="End of DANGER State"];
+
+       D_1 -> D_2 [label="No"]
+       D_1_a -> D_2
+
+       D_2_a -> D_3
+       D_2_b -> D_3
+
+       D_3 -> D_end [label="No"]
+       D_3_b -> D_end [label="No"]
+       D_3_d -> D_end 
+       D_3_e -> D_end
+    }
+
+    // ================= MATE =================
+    subgraph cluster_mate_flow {
+        label="State: MATE"; color=none; 
+        style=filled;
+        color="#f1f8e9";
+
+	subgraph cluster_mate_flow_1 {
+	  label = "(1)";
+          style=filled;
+          color="#00f8e9";
+
+	  M_1 [label="1: mateTarget is not \n null and its state is DEAD \n or it is out of the \n visual field?", shape=diamond];
+	  M_1_a [label="1: set mateTarget to null"];
+
+	  M_1 -> M_1_a [label="Yes"]
+       }  
+
+	subgraph cluster_mate_flow_2 {
+	  label = "(2)";
+          style=filled;
+          color="#00f8e9";
+
+	  M_2 [label="2: mateTarget is null?", shape=diamond];
+	  M_2_a [label="2: Choose and animal to mate with"];
+	  M_2_b [label="2: mateTarget is null?", shape=diamond];
+	  M_2_c [label="2: Advance"];
+	  M_2_d [label="2.i - 2.v"];
+	  M_2_e [label="vi :the distance from the \n animal to mateTarget \n is smaller than 8.0?", shape=diamond];
+	  M_2_f [label="2.vi.a: Reset the desire of the animal \l and of mateTarget to 0.0"];
+	  M_2_g [label="2.vi.b: has a baby already?", shape=diamond];
+	  M_2_h [label="2.vi.b: with probability \l de 0.9 it carries a \l new baby using \l new Sheep(this, mateTarget)"];
+	  M_2_i [label="2.vi.c: set mateTarget to null"];
+	  
+	  M_2 -> M_2_a [label="Yes"]
+	  M_2_a -> M_2_b 
+	  M_2_b -> M_2_c [label="Yes"]
+	  M_2 -> M_2_d [label="No"]
+	  M_2_d -> M_2_e
+	  M_2_e -> M_2_f [label="Yes"]
+	  M_2_f -> M_2_g
+	  M_2_g -> M_2_h [label="No"]
+	  M_2_g -> M_2_i [label="Yes"]
+	  M_2_h -> M_2_i
+
+       }  
+
+       subgraph cluster_mate_flow_3 {
+          label = "(3)";
+          style=filled;
+          color="#00f8e9";
+
+	  M_3 [label="3: dangerSource is null?", shape=diamond];
+	  M_3_a [label="3: choose a new animal \l that is considered dangerous"];
+
+	  M_3 -> M_3_a [label="Yes"]
+	  
+       }
+
+       subgraph cluster_mate_flow_4 {
+          label = "(4)";
+          style=filled;
+          color="#00f8e9";
+
+	  M_4 [label="4: dangerSource is null?", shape=diamond];
+	  M_4_a [label="4: set state to DANGER"];
+	  M_4_b [label="4: the desire is less \n than 65.0?", shape=diamond];
+	  M_4_c [label="4: set state to NORMAL"];
+
+	  M_4 -> M_4_a [label="Yes"]
+	  M_4 -> M_4_b [label="No"]
+	  M_4_b -> M_4_c [label="Yes"]
+	  
+       }
+
+       M_end [label="End of MATE State"];
+
+       M_1_a -> M_2
+       M_1 -> M_2 [label="No"]
+       M_2_b -> M_3   [label="No"]
+       M_2_c -> M_3  
+       M_2_e -> M_3   [label="No"]
+       M_2_i -> M_3
+       M_3_a -> M_4
+       M_3 -> M_4   [label="No"]
+       M_4_a -> M_end 
+       M_4_b -> M_end  [label="No"]
+       M_4_c -> M_end 
+
+   }
+
+    StateDecider -> N_1_i [label="NORMAL"]
+    StateDecider -> D_1 [label="DANGER"]
+    StateDecider -> M_1 [label="MATE"]
+}

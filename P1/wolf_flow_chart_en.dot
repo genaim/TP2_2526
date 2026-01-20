@@ -1,0 +1,205 @@
+digraph AnimalStateUpdate_Acyclic {
+    // Configuración general
+    graph [rankdir=TB, splines=polyline, nodesep=0.6, ranksep=0.5];
+    node [fontname="Arial", fontsize=10, shape=box, style="filled,rounded", fillcolor="#F5F5F5", color="#333333"];
+    edge [fontname="Arial", fontsize=9, color="#555555"];
+
+    // Nodos de Inicio y Fin
+    Start [label="Start: Update State Wolf", shape=ellipse, fillcolor="#E1F5FE", style=filled];
+    
+    // Decisión Principal
+    StateDecider [shape=diamond, label="Current State?", style=filled];
+
+    Start -> StateDecider;
+
+    // ================= NORMAL =================
+    subgraph cluster_normal_flow {
+	label = "State: NORMAL";
+        style=filled;
+        color="#f1f8e9";
+
+	subgraph cluster_normal_flow_1 {
+	  label = "(1)";
+          style=filled;
+          color="#00f8e9";
+
+	  N_1_i [label="i: the distance of the\n animal to destination \n is smaller than 8.0?", shape=diamond];
+	  N_1_i_yes [label="i: Choose a new \l random destination"];
+	  N_1_ii [label="1.ii - 1.v"];
+
+	  N_1_i -> N_1_i_yes [label="Yes"]
+	  N_1_i -> N_1_ii [label="No"]
+	  N_1_i_yes -> N_1_ii 
+       }  
+
+      subgraph cluster_normal_flow_2 {
+	  label = "(2)";
+          style=filled;
+          color="#00f8e9";
+
+	  N_2_i [label="i: its energy is \n smaller than 50.0?", shape=diamond];
+	  N_2_i_yes [label="i: set state to HUNGER"];
+	  N_2_ii_b [label="ii: its desire is \n greater than de 65.0?", shape=diamond];
+	  N_2_ii_c [label="ii: set state to MATE"];
+
+	  N_2_i -> N_2_i_yes [label="Yes"]
+	  N_2_i -> N_2_ii_b [label="No"]
+	  N_2_ii_b -> N_2_ii_c [label="Yes"]
+	  
+       }
+
+       N_end [label="End of Normal State"];
+
+       N_1_ii -> N_2_i
+       N_2_i_yes -> N_end
+       N_2_ii_b -> N_end [label="No"]
+       N_2_ii_c -> N_end
+       
+    }
+
+    // ================= HUNGER =================
+    subgraph cluster_hunger_flow {
+        label="State: HUNGER"; color=none; 
+        style=filled;
+        color="#f1f8e9";
+
+	subgraph cluster_hunger_flow_1 {
+	  label = "(1)";
+          style=filled;
+          color="#00f8e9";
+
+	  H_1 [label="1: huntTarget is null, or \n huntTarget is not null \n and its state is DEAD or \n it is out of the visual field?", shape=diamond];
+	  H_1_a [label="1: search for an animal to hunt"];
+
+	  H_1 -> H_1_a [label="Yes"]
+       }  
+
+	subgraph cluster_hunger_flow_2 {
+	  label = "(2)";
+          style=filled;
+          color="#00f8e9";
+
+	  H_2 [label="2: huntTarget \n is null", shape=diamond];
+	  H_2_a [label="2: Advance"];
+	  H_2_b [label="2.i - 2.v"];
+	  H_2_c [label="2.vi: the distance of the \n animal from huntTarget \n is smaller than 8.0?"]
+	  H_2_d [label="2.vi.a - 2.vi.c"];
+	  
+	  H_2 -> H_2_a [label="Yes"]
+	  H_2 -> H_2_b [label="No"]
+	  H_2_b ->  H_2_c
+	  H_2_c -> H_2_d [label="Yes"]
+	  
+       }  
+
+       subgraph cluster_hunger_flow_3 {
+	  label = "(3)";
+          style=filled;
+          color="#00f8e9";
+
+	  H_3   [label="i: its energy is \n greater than 50.0?", shape=diamond]
+	  H_3_a [label="i.a: its desire is \n smaller than 65.0?", shape=diamond]
+	  H_3_b [label="i.a: set state to NORMAL"]
+	  H_3_c [label="i.a: set state to MATE"]
+
+	  H_3 -> H_3_a [label="Yes"]
+	  H_3_a -> H_3_b [label="Yes"]
+	  H_3_a -> H_3_c [label="No"]
+      }
+
+       H_end [label="End of HUNGER State"];
+
+       H_1 -> H_2 [label="No"]
+       H_1_a -> H_2
+
+       H_2_a -> H_3
+       H_2_d -> H_3
+       H_2_c -> H_3 [label="No"]
+
+       H_3 -> H_end [label="No"]
+       H_3_b -> H_end 
+       H_3_c -> H_end
+    }
+
+    // ================= MATE =================
+    subgraph cluster_mate_flow {
+        label="State: MATE"; color=none; 
+        style=filled;
+        color="#f1f8e9";
+
+	subgraph cluster_mate_flow_1 {
+	  label = "(1)";
+          style=filled;
+          color="#00f8e9";
+
+	  M_1 [label="1: mateTarget is not \n null and its state is DEAD \n or it is out of the visual field?", shape=diamond];
+	  M_1_a [label="1: set mateTarget to null"];
+
+	  M_1 -> M_1_a [label="Yes"]
+       }  
+
+	subgraph cluster_mate_flow_2 {
+	  label = "(2)";
+          style=filled;
+          color="#00f8e9";
+
+	  M_2 [label="2: mateTarget is null?", shape=diamond];
+	  M_2_a [label="2: search for a new animal to mate with"];
+	  M_2_b [label="2: mateTarget is null?", shape=diamond];
+	  M_2_c [label="2: Advance"];
+	  M_2_d [label="2.i - 2.v"];
+	  M_2_e [label="vi : the distance of the \n animal to mateTarget \n is smaller than 8.0?", shape=diamond];
+	  M_2_f [label="2.vi.a: Reset the desire of the animal \l and of mateTarget to 0.0"];
+	  M_2_g [label="2.vi.b: has a baby already?", shape=diamond];
+	  M_2_h [label="2.vi.b: with probability \l de 0.9 it carries a \l new baby using \l new Wolf(this, mateTarget)"];
+	  M_2_i [label="2.vi.c: Subtract 10.0 from the energy"];
+	  M_2_ii [label="2.vi.d: set mateTarget to null"];
+	  
+	  M_2 -> M_2_a [label="Yes"]
+	  M_2_a -> M_2_b 
+	  M_2_b -> M_2_c [label="Yes"]
+	  M_2 -> M_2_d [label="No"]
+	  M_2_d -> M_2_e
+	  M_2_e -> M_2_f [label="Yes"]
+	  M_2_f -> M_2_g
+	  M_2_g -> M_2_h [label="No"]
+	  M_2_g -> M_2_i [label="Yes"]
+	  M_2_h -> M_2_i
+	  M_2_i -> M_2_ii
+
+       }  
+
+       subgraph cluster_mate_flow_3 {
+          label = "(3)";
+          style=filled;
+          color="#00f8e9";
+
+	  M_3 [label="3: its energy is \n smaller than 50.0?", shape=diamond];
+	  M_3_a [label="3: set state to HUNGER"];
+	  M_3_b [label="3: its desire is \n smaller than 65.0?", shape=diamond];
+	  M_3_c [label="3: set state to NORMAL"];
+
+	  M_3 -> M_3_a [label="Yes"]
+	  M_3 -> M_3_b [label="No"]
+	  M_3_b -> M_3_c [label="Yes"]
+	  
+       }
+
+
+       M_end [label="End of MATE State"];
+
+       M_1_a -> M_2
+       M_1 -> M_2 [label="No"]
+       M_2_b -> M_3   [label="No"]
+       M_2_c -> M_3  
+       M_2_e -> M_3   [label="No"]
+       M_2_ii -> M_3
+       M_3_b -> M_end [label="No"]
+       M_3_a -> M_end
+       M_3_c -> M_end
+   }
+
+    StateDecider -> N_1_i [label="NORMAL"]
+    StateDecider -> H_1 [label="HUNGER"]
+    StateDecider -> M_1 [label="MATE"]
+}
