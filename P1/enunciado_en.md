@@ -6,8 +6,6 @@
 
 ## Copy Control
 
-### Copy Detection
-
 For each of the TP2 assignments, all the submissions from all the
 different TP2 groups will be checked using anti-plagiarism software,
 by comparing them all pairwise and by searching to see if any of the
@@ -23,7 +21,7 @@ engines. If you are asked to provide your code by anyone other than
 your course lecturer, e.g. an employer of a private academy, you must
 refuse.
 
-### General Instructions
+## General Instructions
 
 The following instructions are **strict**, meaning **you must follow them**.
 
