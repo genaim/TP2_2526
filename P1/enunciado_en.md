@@ -310,7 +310,7 @@ In addition to what we explain below remember that: when changing to `NORMAL` st
 
 ##### How to Update the Object According to its State
 
-Flowchart of the steps detailed below: [[svg](./sheep_flow_chart.svg)] [[png](./sheep_flow_chart.png)]
+Flowchart of the steps detailed below: [[svg](./sheep_flow_chart_en.svg)] [[png](./sheep_flow_chart_en.png)]
 
 If the current state is `NORMAL`:
 
@@ -408,7 +408,7 @@ In addition to what we explain below remember that: when changing to `NORMAL` st
 
 ##### How to Update the Object According to its State
 
-Flowchart of the steps detailed below: [[svg](./wolf_flow_chart.svg)] [[png](./wolf_flow_chart.png)]
+Flowchart of the steps detailed below: [[svg](./wolf_flow_chart_en.svg)] [[png](./wolf_flow_chart_en.png)]
 
 If the current state is `NORMAL`:
 
