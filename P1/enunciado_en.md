@@ -308,7 +308,7 @@ In addition to what we explain below remember that: when changing to `NORMAL` st
 > [!IMPORTANT]
 > In point 2 above you must use a `switch` to distinguish the different states and call other methods to carry out the corresponding action. You cannot include all the code in this method.
 
-##### How to Update the Object According to State
+##### How to Update the Object According to its State
 
 Flowchart of the steps detailed below: [[svg](./sheep_flow_chart.svg)] [[png](./sheep_flow_chart.png)]
 
@@ -406,7 +406,7 @@ In addition to what we explain below remember that: when changing to `NORMAL` st
 > [!IMPORTANT]
 > In point 2 above you must use a `switch` to distinguish the different states and call other methods to carry out the corresponding action. You cannot include all the code in this method.
 
-##### How to Update the Object According to State
+##### How to Update the Object According to its State
 
 Flowchart of the steps detailed below: [[svg](./wolf_flow_chart.svg)] [[png](./wolf_flow_chart.png)]
 
