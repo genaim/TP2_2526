@@ -7,13 +7,11 @@
 
 ## Control de Copias 
 
-### Detección de copias
-
 Durante el curso se realizará control de copias de todas las prácticas, comparando las entregas de todos los grupos de TP2. Se considera copia la reproducción total o parcial del código de otros alumnos o cualquier código extraído de Internet o de cualquier otra fuente, salvo aquellas autorizadas explícitamente por el profesor. En caso de detección de  copia, la calificación en la convocatoria de TP2 en la que se haya detectado la copia será 0.
 
 Si decides almacenar tu código en un repositorio remoto, por ejemplo en un sistema de control de versiones gratuito con vistas a facilitar la colaboración con tu compañero de laboratorio, asegúrate de que tu código no esté al alcance de los motores de búsqueda. Si alguien que no sea el profesor de tu asignatura, por ejemplo un empleador de una academia privada, te pide que facilites tu código, debes negarte.
 
-### Instrucciones Generales
+## Instrucciones Generales
 
 Las siguientes instrucciones son **estrictas**, es decir, **debes seguirlas obligatoriamente**.
 
