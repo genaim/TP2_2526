@@ -191,7 +191,7 @@ protected Animal(Animal p1, Animal p2)
 Attributes must be initialized as follows: `dest`, `baby`, `mateTarget`, and `regionMngr` are `null`, `state` is `NORMAL`, `desire` is `0.0`, `geneticCode` and `diet` are inherited from `p1`, `mateStrategy` is inherited from `p2`, `energy` is the average of the energies of `p1` and `p2`, `pos` is a random position near `p1` using for example:
 
 ```java
-p1.getPosition().plus(Vector2D.getRandomVector(-1,1).scale(60.0*(Utils.RAND.nextGaussian()+1)))
+p1.getPosition().plus(Vector2D.get_random_vector(-1,1).scale(60.0*(Utils.RAND.nextGaussian()+1)))
 
 ```
 
@@ -449,7 +449,7 @@ If the current state is `MATE`:
 	5. Add `30.0*dt` to the desire (always keeping it between `0.0` and `100.0`).
 	6. If the distance from the animal to `mateTarget` is less than `8.0`, then they will mate according to the following steps:
 		1. Reset the desire of the animal and of `mateTarget` to `0.0`.
-		2. If the animal is not already carrying a baby, with a probability of `0.9` it will carry a new baby using `new Wolf(this, mateTarget)`.
+		2. If the animal is not already carrying a baby, with a probability of `0.75` it will carry a new baby using `new Wolf(this, mateTarget)`.
 		3. Subtract `10.0` from the energy (always keeping it between `0.0` and `100.0`).
 		4. Set `mateTarget` to `null`.
 3. If its energy is less than `50.0` change state to `HUNGER`, and if it is not and desire is less than `65.0` change state to `NORMAL`.
