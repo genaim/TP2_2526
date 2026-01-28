@@ -427,7 +427,7 @@ Si el estado actual es `MATE`:
    5. Añadir `30.0*dt` al deseo  (manteniéndola siempre entre `0.0` y `100.0`).  
    6. Si la distancia del animal a `mateTarget` es menor que `8.0`, entonces van a emparejarse según los siguientes pasos:  
       1. Resetear el deseo del animal y del `mateTarget` a `0.0`.  
-      2. Si el animal no lleva un bebé ya, con probabilidad de `0.9` va a llevar a un nuevo bebé usando `new Wolf(this, mateTarget)`.  
+      2. Si el animal no lleva un bebé ya, con probabilidad de `0.75` va a llevar a un nuevo bebé usando `new Wolf(this, mateTarget)`.  
       3. Quitar `10.0` de la energía (manteniéndola siempre entre `0.0` y `100.0`).
       4. Poner `mateTarget` a `null`.  
 3. Si su energía es menor que `50.0` cambia de estado a `HUNGER`, y si no lo es y el deseo es menor que `65.0` cambia de estado a `NORMAL`.
