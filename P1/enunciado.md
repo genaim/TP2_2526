@@ -176,7 +176,7 @@ protected Animal(Animal p1, Animal p2)
 Hay que inicializar los atributos de la siguiente manera: `dest`, `baby`, `mateTarget` y `regionMngr` son `null`, `state` es `NORMAL`, `desire` es `0.0`, `geneticCode` y `diet` los hereda de `p1`, `mateStrategy` lo hereda de `p2`, `energy` es la media de las energías de `p1` y `p2`, `pos` es una posición aleatoria cerca de `p1` usando por ejemplo:
 
   ```java
-  p1.getPosition().plus(Vector2D.getRandomVector(-1,1).scale(60.0*(Utils.RAND.nextGaussian()+1)))
+  p1.getPosition().plus(Vector2D.get_random_vector(-1,1).scale(60.0*(Utils.RAND.nextGaussian()+1)))
   ```
 
 `sightRange` es una mutación de la media de los campos visuales de `p1` y `p2` usando por ejemplo:
