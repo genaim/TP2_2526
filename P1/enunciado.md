@@ -41,7 +41,7 @@ La clase principal de la simulación incluye un gestor de regiones y una lista d
 
 El bucle principal del simulador avanza la simulación varios pasos durante `T` segundos (por ejemplo, en cada paso avanza la simulación `0.003` segundos – el parámetro del método `update` que mencionamos arriba). El bucle muestra el estado actual de los animales usando el visor que proporcionamos con la práctica (ver el apartado [El Visor de Objetos](#el-visor-de-objetos)), y además, escribe el estado inicial y final de la simulación en un archivo usando el formato `JSON`. La configuración inicial del mundo se carga desde un archivo en formato `JSON` (ver el apartado [Análisis y Creación de Datos JSON en Java](#análisis-y-creación-de-datos-json-en-java)).
 
-Ver [demo.mp4](./demo.mp4])
+Ver [demo.mp4](./demo.mp4)
 
 ## La Lógica del Simulador (el modelo)
 
