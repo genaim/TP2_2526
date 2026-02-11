@@ -31,6 +31,9 @@ Las siguientes instrucciones son **estrictas**, es decir, **debes seguirlas obli
 
 ## Descripción General del Simulador
 
+<video src="demo.mp4" controls="controls" style="max-width: 100%;">
+</video>
+
 El simulador tiene como objetivo simular un ecosistema compuesto por animales. Los animales en la simulación pueden ser carnívoros o herbívoros. En esta práctica, tenemos dos tipos: lobos (carnívoros) y ovejas (herbívoros). Cada animal es un individuo y determina su propio comportamiento basándose en su entorno y su propio estado. Los estados posibles son: estado normal; buscando a otro animal para emparejarse; huyendo de otro animal que le resulta peligroso; siguiendo a otro animal para cazarlo, etc. Cuando los animales se emparejan, pueden nacer otros animales que heredan propiedades de sus genitores. Los animales mueren cuando alcanzan un límite de edad o se quedan sin energía.
 
 Los animales actualizan sus estados mediante un método `update(double)`, donde el parámetro representa un intervalo de tiempo que corresponde a un paso en la simulación (hay que tenerlo en cuenta al actualizar la edad, la posición, etc). Usamos una clase `Vector2D` para representar un punto en un plano bidimensional, como la posición de un animal (ver el apartado [La Clase Vector2D](#la-clase-vector2d)).
