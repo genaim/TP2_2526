@@ -50,6 +50,8 @@ The main class of the simulation includes a region manager and a list of animals
 
 The simulator's main loop advances the simulation several steps for `T` seconds (for example, in each step the simulation advances `0.003` seconds – the parameter of the `update` method mentioned above). The loop displays the current state of the animals using the viewer we provide with the assignment (see the section [The Object Viewer](#the-object-viewer)), and additionally, writes the initial and final state of the simulation to a file using the `JSON` format. The initial configuration of the world is loaded from a file in `JSON` format (see the section [Handling JSON in Java](#handling-json-in-java)).
 
+See [demo.mp4](./demo.mp4)
+
 ## The Logic of the Simulator (the model)
 
 All classes/interfaces in this section must go in the package `simulator.model`.
