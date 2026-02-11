@@ -31,9 +31,6 @@ Las siguientes instrucciones son **estrictas**, es decir, **debes seguirlas obli
 
 ## Descripción General del Simulador
 
-<video src="demo.mp4" controls="controls" style="max-width: 100%;">
-</video>
-
 El simulador tiene como objetivo simular un ecosistema compuesto por animales. Los animales en la simulación pueden ser carnívoros o herbívoros. En esta práctica, tenemos dos tipos: lobos (carnívoros) y ovejas (herbívoros). Cada animal es un individuo y determina su propio comportamiento basándose en su entorno y su propio estado. Los estados posibles son: estado normal; buscando a otro animal para emparejarse; huyendo de otro animal que le resulta peligroso; siguiendo a otro animal para cazarlo, etc. Cuando los animales se emparejan, pueden nacer otros animales que heredan propiedades de sus genitores. Los animales mueren cuando alcanzan un límite de edad o se quedan sin energía.
 
 Los animales actualizan sus estados mediante un método `update(double)`, donde el parámetro representa un intervalo de tiempo que corresponde a un paso en la simulación (hay que tenerlo en cuenta al actualizar la edad, la posición, etc). Usamos una clase `Vector2D` para representar un punto en un plano bidimensional, como la posición de un animal (ver el apartado [La Clase Vector2D](#la-clase-vector2d)).
@@ -43,6 +40,8 @@ La simulación incluye regiones donde se encuentran los animales, y el mundo est
 La clase principal de la simulación incluye un gestor de regiones y una lista de animales, y permite añadir animales a la simulación, avanzar la simulación un paso, consultar el estado, etc. Un paso de la simulación incluye: quitar todos los animales muertos de la simulación; actualizar el estado de todos los animales vivos; y hacer nacer a los bebés que llevan los animales.
 
 El bucle principal del simulador avanza la simulación varios pasos durante `T` segundos (por ejemplo, en cada paso avanza la simulación `0.003` segundos – el parámetro del método `update` que mencionamos arriba). El bucle muestra el estado actual de los animales usando el visor que proporcionamos con la práctica (ver el apartado [El Visor de Objetos](#el-visor-de-objetos)), y además, escribe el estado inicial y final de la simulación en un archivo usando el formato `JSON`. La configuración inicial del mundo se carga desde un archivo en formato `JSON` (ver el apartado [Análisis y Creación de Datos JSON en Java](#análisis-y-creación-de-datos-json-en-java)).
+
+Ver [demo.mp4](./demo.mp4])
 
 ## La Lógica del Simulador (el modelo)
 
