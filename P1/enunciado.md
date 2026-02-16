@@ -899,7 +899,7 @@ Nótese que este builder requiere acceso a una factoría de estrategias (hay que
 }
 ```
 
-La clave `"factor"` es opcional con valor por defecto `2.0`. La clave `"food"` es opcional con valor por defecto `1000.0`.
+La clave `"factor"` es opcional con valor por defecto `2.0`. La clave `"food"` es opcional con valor por defecto `100.0`.
 
 ### La Clase `BuilderBasedFactory<T>`
 
