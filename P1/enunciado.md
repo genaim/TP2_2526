@@ -627,7 +627,7 @@ Hay que implementar los siguientes métodos:
 
 * `private setRegion(int row, int col, Region r)`: añade la región `r` al gestor de regiones en la posición `(row,col)`.
 
-* `void setRegion(int row, int col, JSONObject rJson)`: crea una región `R` a partir de `rJson` y llama a `setRegion(row,col,R)`.
+* `public void setRegion(int row, int col, JSONObject rJson)`: crea una región `R` a partir de `rJson` y llama a `setRegion(row,col,R)`.
 
 * `private void addAnimal(Animal a)`: añade el animal `a` a la lista de animales y lo registra en el gestor de regiones.
 
