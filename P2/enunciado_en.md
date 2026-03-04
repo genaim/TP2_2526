@@ -32,7 +32,7 @@ The following instructions are **strict**, meaning **you must follow them strict
 5. The use of any tool for the automatic generation of graphical user interfaces is not allowed.
 6. Download [extra.zip](./extra.zip) and unzip it in the `src` folder (it includes `JTable` and `JDialog` examples).
 7. Download [ViewUtils.java](./ViewUtils.java), [AbstractMapViewer.java](./AbstractMapViewer.java) and [MapViewer.java](./MapViewer.java) and copy them to the `simulator.view` package.
-8. Download [icons.zip](/icons.zip) and unzip it in the `resources` folder to have a `resources/icons` folder where the icons are. Using another folder for the icons is not allowed.
+8. Download [icons.zip](./icons.zip) and unzip it in the `resources` folder to have a `resources/icons` folder where the icons are. Using another folder for the icons is not allowed.
 9. Do not print errors with `System.out` or with the exception's `printStackTrace()`; all errors must be shown using `ViewUtils.showErrorMsg`.
 10. When you submit the assignment, upload a file named **src.zip** that includes only the **src** folder. Calling it by another name or using **7zip**, **rar**, etc., is not allowed. If you use additional icons, the `resources/icons` folder can be included as long as the total size of the **zip** does not exceed **100k**.
 
