@@ -21,7 +21,7 @@ Las siguientes instrucciones son **estrictas**, es decir, **debes seguirlas obli
 5. No está permitido el uso de ninguna herramienta para la generación automática de interfaces gráficas de usuario.  
 6. Descarga [extra.zip](./extra.zip) y descomprímelo en la carpeta `src` (incluye  ejemplos de `JTable` y `JDialog`).  
 7. Descarga [ViewUtils.java](./ViewUtils.java), [AbstractMapViewer.java](./AbstractMapViewer.java) y [MapViewer.java](./MapViewer.java) y cópialos al paquete `simulator.view`.
-8. Descarga [icons.zip](/icons.zip) y descomprímelo en la carpeta `resources` para tener una carpeta `resources/icons`  donde estén los iconos. No está permitido usar otra carpeta para los iconos.  
+8. Descarga [icons.zip](./icons.zip) y descomprímelo en la carpeta `resources` para tener una carpeta `resources/icons`  donde estén los iconos. No está permitido usar otra carpeta para los iconos.  
 9. No escribas errores con `System.out` ni con `printStackTrace()` de la excepción, todos los errores hay que mostrarlos usando `ViewUtils.showErrorMsg`.  
 10. Cuando entregues la práctica sube un fichero con el nombre **src.zip** que incluya solo la carpeta **src**. No está permitido llamarlo con otro nombre ni usar **7zip**, **rar**, etc. Si usas iconos adicionales, se puede incluir la carpeta resources/icons mientras que el tamaño total del **zip** no supera los **100k**.
 
