@@ -5,9 +5,9 @@
 
 En la práctica 2, hemos descrito dos enfoques para implementar la funcionalidad de los botones  ![run](run.png) y  ![stop](stop.png)
 
-1. En el primero, utilizamos la cola de eventos de Swing para realizar la llamada recursiva a **runSim**, y de este modo, entre una llamada y otra a `_ctrl.advance(dt)` Swing puede actualizar la vista y manejar las interacciones con el usuario.
+1. En el primero, utilizamos la cola de eventos de Swing para realizar la llamada recursiva a **runSim**, y de este modo, entre una llamada y otra a `ctrl.advance(dt)` Swing puede actualizar la vista y manejar las interacciones con el usuario.
 
-2. En el segundo, sugerimos cambiar el método **runSim** para simplemente llamar `n` veces a `_ctrl.run(dt)`, en cuyo caso la vista permanece bloqueada mientras el simulador se está ejecutando y solo vemos el resultado final.
+2. En el segundo, sugerimos cambiar el método **runSim** para simplemente llamar `n` veces a `ctrl.advance(dt)`, en cuyo caso la vista permanece bloqueada mientras el simulador se está ejecutando y solo vemos el resultado final.
 
 Aunque hemos logrado un comportamiento razonable con el primer enfoque, teniendo en cuenta la capacidad de respuesta, podemos mejorarlo si utilizamos programación multihilo, que es lo que haremos en esta práctica.
 
