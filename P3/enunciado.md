@@ -13,9 +13,6 @@ Aunque hemos logrado un comportamiento razonable con el primer enfoque, teniendo
 
 ## Utilizar Hilos en Java para Proporcionar Capacidad de Respuesta en la GUI
 
-![Interfaz gráfica](gui.png)  
-*Figura 1: La GUI*
-
 Cambia el panel de control para incluir un nuevo **JSpinner** _Delay_ (con un valor mínimo de 0, valor máximo 1000 y tamaño de paso 1) y una etiqueta correspondiente. Su valor representa un retardo entre pasos de simulación consecutivos, ya que ahora la ejecución será más rápida.
 
 Cambia el método **runSim** para incluir un segundo parámetro **delay** de tipo **int**, y a continuación cambia su cuerpo a algo parecido al siguiente pseudocódigo:
