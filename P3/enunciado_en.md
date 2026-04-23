@@ -46,7 +46,7 @@ Change the observer methods, in all view classes, so that every time a field or 
 
 ## Optional
 
-Implement the functionality described in the previous section using a **SwingWorker** instead of creating a new thread every time ![run](run.png) is clicked. Mantener las tres implementaciones (la de la práctica 2, la que usa un hilo y la que usa un Swing Worker) y permitir elegir entre ellas usando un combobox.
+Implement the functionality described in the previous section using a **SwingWorker** instead of creating a new thread every time ![run](run.png) is clicked. You can maintain the 3 implementations (the one of assignment 2, the one with a thread, and the one with a Swing Worker) and allow choosing one using a combox box.
 
 
 ![MainWindow](MainWindow.png)
