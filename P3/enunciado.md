@@ -47,6 +47,7 @@ Cambia los métodos de observador, en todas las clases de la vista, de modo que 
 
 ## Opcional
 
-Implementa la funcionalidad descrita en la sección anterior utilizando un **SwingWorker** en lugar de crear un nuevo hilo cada vez que se haga clic en ![run](run.png).
+Implementa la funcionalidad descrita en la sección anterior utilizando un **SwingWorker** en lugar de crear un nuevo hilo cada vez que se haga clic en ![run](run.png). Puedes mantener las tres implementaciones (la de la práctica 2, la que usa un hilo y la que usa un Swing Worker) y permitir elegir entre ellas usando un combobox.
+
 
 ![MainWindow](MainWindow.png)
